@@ -13,7 +13,7 @@ const SearchBar = (props) => {
 
     return(
         <form onSubmit={onSubmitHandler}>
-            <div className="input-group rounded mt-3">
+            <div className="input-group rounded">
                 <input 
                     type="search" 
                     className="form-control rounded" 
