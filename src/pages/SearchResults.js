@@ -6,7 +6,7 @@ import image01 from "../assets/curry-chickpeas.jpg"
 const SearchResults = (props) => {
     const [isLoading, setIsLoading] = useState(false);
 
-    
+    //https://developer.edamam.com/edamam-docs-recipe-api
     return(
         <Fragment>
             {console.log("Props", props.ingredientsData)}
@@ -71,7 +71,6 @@ const SearchResults = (props) => {
                     </div>
                 </div>
             }
-
         </Fragment>
     )
 }

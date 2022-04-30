@@ -22,6 +22,8 @@ const SearchBar = (props) => {
                     aria-describedby="search-addon" 
                     ref={ingredientRef}
                 />
+                {console.log("CurrentRef", ingredientRef)}
+                {console.log("VaLUE", props.data)}
                 <button className="input-group-text border-0" id="search-addon" type="submit">
                     <FontAwesomeIcon icon={faSearch} />
                 </button>

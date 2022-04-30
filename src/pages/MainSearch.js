@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 
 const MainSearch = (props) => {
 
-    const setIngredientsHandler = (data) => {
-        props.onSetIngredientsApp(data)
+    const history = useHistory();
+
+    const setIngredientsHandler = (searchData) => {
+        props.onSetIngredientsApp(searchData)
+        if (searchData){
+            history.push(`/results/?search=${searchData}`)
+        }
     }
 
     return(
