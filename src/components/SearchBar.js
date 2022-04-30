@@ -1,9 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 
 const SearchBar = (props) => {
     const ingredientRef = useRef()
+
+    useEffect(()=> {
+        if(ingredientRef.current){
+            ingredientRef.current.value = new URLSearchParams(window.location.search).get("search")
+        }
+    }, [])
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
@@ -22,8 +28,6 @@ const SearchBar = (props) => {
                     aria-describedby="search-addon" 
                     ref={ingredientRef}
                 />
-                {console.log("CurrentRef", ingredientRef)}
-                {console.log("VaLUE", props.data)}
                 <button className="input-group-text border-0" id="search-addon" type="submit">
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
