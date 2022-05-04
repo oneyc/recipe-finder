@@ -36,7 +36,6 @@ const RecipeDetails = () => {
                         In a food processor, combine 9 garlic cloves, a thumb-sized piece of peeled ginger and the remaining oil, then add 1 tbsp ground coriander, 2 tbsp ground cumin, 1 tbsp garam masala, 2 tbsp tomato purée, ½ tsp salt and the fried onion. Blend to a smooth paste – add a drop of water or more oil, if needed.                    </p>
                 </section>
             </div>
-
         </Fragment>
     )
 }

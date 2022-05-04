@@ -1,5 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Form } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import SearchBar from "../components/SearchBar"
 import classes from "./SearchResults.module.css"
 
@@ -161,6 +163,8 @@ const DUMMY_DATA = [
 ]
 
 const SearchResults = (props) => {
+    const history = useHistory()
+
     const [recipes, setRecipes] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -174,6 +178,7 @@ const SearchResults = (props) => {
             console.log(data);
             const transformedRecipeData = DUMMY_DATA.map((recipeData) => {
                 return {
+                    id: recipeData.id,
                     title: recipeData.title,
                     missedIngredientCount: recipeData.missedIngredientCount,
                     missedIngredients: recipeData.missedIngredients,
@@ -189,6 +194,12 @@ const SearchResults = (props) => {
         sendRequest();
     }, [])
 
+    const submitButtonHandler = (event) => {
+        event.preventDefault();
+        console.log(event.target.id)
+        history.push(`/recipe/${event.target.id}`)
+    }
+
     const recipePrinter = recipes.map((data) => {
             return(
                 <div className="col-6 col-sm-6 col-md-4">
@@ -202,15 +213,17 @@ const SearchResults = (props) => {
                         You Have: {data.usedIngredients.map((data)=>{
                             return data.name + ", "
                         })
-                    }
+                        }
                         </Card.Text>
                         <Card.Text>
                         You Need: {data.missedIngredients.map((data)=>{
                             return data.name + ", "
                         })
                     }                        
-                    </Card.Text>
-                        <Button variant="primary">View recipe</Button>
+                        </Card.Text>
+                            <Button variant="primary" type="submit" id={data.id} onClick={submitButtonHandler}>
+                                View recipe
+                            </Button>
                     </Card.Body>
                 </Card>
             </div>
